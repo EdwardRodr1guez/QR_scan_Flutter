@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:qr_scan/widgets/custom_nav.dart';
+import 'package:qr_scan/widgets/custom_scan_button.dart';
 
 class HomeScreen extends StatelessWidget {
    
@@ -9,10 +11,23 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: AppBar(title: Text("Welcome 2 Home Screen"),backgroundColor: Colors.red,),
+      appBar: AppBar(title: Text("Historial"),
+                    backgroundColor: Colors.red,
+                    elevation: 0,
+                    actions: [
+                      IconButton(
+                      onPressed: (){},
+                      icon: Icon(Icons.delete_forever))
+                    ],
+      ),
+
       body: Center(
          child: Text('HomeScreen'),
       ),
+
+      bottomNavigationBar: CustomNav(),
+      floatingActionButton:CustomScanButton() ,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
