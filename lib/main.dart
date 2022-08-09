@@ -16,6 +16,12 @@ class MyApp extends StatelessWidget {
         "home": (context) => HomeScreen(),
         "mapa": (context) => MapaScreen(),
       },
+      theme: ThemeData(
+        colorScheme: ColorScheme.light().copyWith(primary:  Colors.red,),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.red
+          )
+      ),
     );
     
   }

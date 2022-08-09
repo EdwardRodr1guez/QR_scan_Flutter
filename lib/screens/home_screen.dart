@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(title: Text("Historial"),
-                    backgroundColor: Colors.red,
+                    //backgroundColor: Colors.red,
                     elevation: 0,
                     actions: [
                       IconButton(
