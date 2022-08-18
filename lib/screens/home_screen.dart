@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_scan/models/db_provider.dart';
+import 'package:qr_scan/providers/scan_list_provider.dart';
 import 'package:qr_scan/providers/ui_provider.dart';
 import 'package:qr_scan/screens/screens.dart';
 import 'package:qr_scan/widgets/custom_nav.dart';
@@ -20,7 +21,12 @@ class HomeScreen extends StatelessWidget {
                     elevation: 0,
                     actions: [
                       IconButton(
-                      onPressed: (){},
+                      onPressed: (){
+
+                        Provider.of<ScanListProvider>(context,listen: false).borrarTodos();
+
+
+                      },
                       icon: Icon(Icons.delete_forever))
                     ],
       ),
@@ -51,18 +57,24 @@ class _HomeScreenBody extends StatelessWidget {
     //DBProvider.db.getScanById(2).then((scan) => print(scan!.valor));
     //print(intTemp);   
 
+
+    //usar scan list provider
+    final scanListProvider =Provider.of<ScanListProvider>(context, listen: false);
+
     DBProvider.db.getAll().then(print);
 
     switch (currentIdx){
 
       case 0:
-      return MapaSubscreen();
+        scanListProvider.cargarScanByTipo('geo');
+        return MapaSubscreen();
 
       case 1:
-      return DireccionSubscreen();
+        scanListProvider.cargarScanByTipo('http');
+        return DireccionSubscreen();
 
       default: 
-      return MapaSubscreen();
+        return MapaSubscreen();
     }
   }
 }

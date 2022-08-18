@@ -105,5 +105,28 @@ class DBProvider {
          : [];
   }
 
+  //actualizar registros
+  Future<int> UpdateScan(ScanModel nuevoScan) async{
+
+    final db  = await database;
+    final res = db.update('Scans', nuevoScan.toJson(), where: 'id=?', whereArgs: [nuevoScan.id]);
+    return res;
+  }
+
+  //borrar registros
+  Future<int> deleteScan (int id) async{
+    final db = await database;
+    final res = await db.delete('Scans', where:'id=?',whereArgs: [id] );
+    return res;
+  }
+
+  //borrar todos los registros
+  Future<int> deleteAllScan () async{
+    final db = await database;
+    final res = await db.delete('Scans');
+    return res;
+  }
+
+
 
 }
